@@ -61,3 +61,19 @@ plt.colorbar()
 plt.xticks(range(10))
 plt.yticks(range(10))
 plt.show()
+fig, axes = plt.subplots(2,5,figsize=(10,5))
+
+for i,ax in enumerate(axes.ravel()):
+    ax.imshow(digits.images[i],cmap='grey')
+    ax.set_title(f'actral:{y[i]}')
+    ax.axis('off')
+    
+plt.tight_layout()
+plt.show()
+
+sample = x_test[0].reshape(1,-1)
+prediction = model.predict(sample)
+
+print('predicted digits',prediction[0])
+print('actral digit',y_test[0])
+
